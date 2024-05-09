@@ -1,0 +1,13 @@
+<h1>Make a New Review</h1>
+
+<%= bootstrap_form_with model: @review, method: :post, url: reviews_path, data: { turbo: false } do |f| %>
+
+  <%= f.text_area :comment %>
+  <%= f.number_field :rating %>
+  <%= f.submit %>
+
+<% end %>
+
+<p class="mt-3">
+  <%= link_to 'Cancel', reviews_path, class: 'btn btn-outline-secondary' %>
+</p>

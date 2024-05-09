@@ -1,0 +1,83 @@
+<div id="total_price">Estimated Price: $0</div>
+<%= bootstrap_form_with model: @custom, url: custom_path, method: :post, data: { turbo: false }, id: "custom_form" do |form| %>
+    <%= form.label :color, "Select a Color" %>
+    <%= form.select :color, options_for_select(['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Purple', 'Pink'], selected: @custom.color), {}, { id: "custom_color" } %>
+  
+    <%= form.label :built_in_game, "Select a Built-in Game" %>
+    <%= form.select :built_in_game, options_for_select(['None', 'Ball Pit', 'Arcade'], selected: @custom.built_in_game), {}, { id: "custom_built_in_game" } %>
+  
+    <%= form.label :manufacturer, "Select a Manufacturer" %>
+    <%= form.select :manufacturer, options_for_select(['Boeing', 'Airbus'], selected: @custom.manufacturer), {}, { id: "custom_manufacturer" } %>
+  
+    <%= form.label :size, "Select a Size" %>
+    <%= form.select :size, options_for_select(['Small', 'Medium', 'Large'], selected: @custom.size), {}, { id: "custom_size" } %>
+    <%= form.label :crayon_walls, "Include Crayon Walls?" %>
+    <%= form.check_box :crayon_walls, {id: "custom_crayon_walls" }%>
+  
+    <%= form.label :entertainment_tablets, "Include Entertainment Tablets?" %>
+    <%= form.check_box :entertainment_tablets, {id: "custom_entertainment_tablets" } %> 
+    <%= form.hidden_field :price, id: "custom_price" %>
+  
+    <%= form.submit "Submit" %>
+  <% end %>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("JavaScript is running");
+    const basePrice = 2000000; // 2 million in cents
+    const prices = {
+        "Ball Pit": 500000,
+        "Arcade": 1000000,
+        "Boeing": { "Small": 250000, "Medium": 500000, "Large": 750000 },
+        "Airbus": { "Small": 500000, "Medium": 1000000, "Large": 1500000 },
+        "Crayon Walls": 1000000,
+        "Entertainment Tablets": 500000
+    };
+
+    function updatePrice() {
+        console.log("update JavaScript is running");
+        let totalCost = basePrice;
+
+        // Add cost for built-in game
+        const builtInGame = document.getElementById("custom_built_in_game").value;
+        if (builtInGame === "Ball Pit") {
+            totalCost += prices["Ball Pit"];
+        } else if (builtInGame === "Arcade") {
+            totalCost += prices["Arcade"];
+        }
+
+        // Add cost for manufacturer and size
+        const manufacturer = document.getElementById("custom_manufacturer").value;
+        const size = document.getElementById("custom_size").value;
+        if (manufacturer in prices) {
+            totalCost += prices[manufacturer][size];
+        }
+
+        // Add cost for crayon walls if checked
+        const crayonWallsChecked = document.getElementById("custom_crayon_walls").checked;
+        if (crayonWallsChecked) {
+            totalCost += prices["Crayon Walls"];
+        }
+
+        // Add cost for entertainment tablets if checked
+        const tabletsChecked = document.getElementById("custom_entertainment_tablets").checked;
+        if (tabletsChecked) {
+            totalCost += prices["Entertainment Tablets"];
+        }
+
+        // Update the total price display
+        document.getElementById("total_price").textContent = `Estimated Price: $${(totalCost / 1000000).toFixed(1)}M`;
+        // Update the hidden input field
+        document.getElementById("custom_price").value = totalCost;
+    }
+
+    // Event listeners for form elements
+    document.body.addEventListener("change", function(event) {
+        const target = event.target;
+        if (target.matches("#custom_color, #custom_built_in_game, #custom_manufacturer, #custom_size, #custom_crayon_walls, #custom_entertainment_tablets")) {
+            updatePrice();
+        }
+    });
+    updatePrice(); // Initial update when page loads
+});
+</script>

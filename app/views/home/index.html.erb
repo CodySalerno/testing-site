@@ -1,0 +1,32 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Junior Jets</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0;">
+
+<div style="background-color: #0047ab; color: #fff; padding: 10px 0; text-align: center;">
+  <h1 style="margin: 0;">Junior Jets</h1>
+</div>
+
+<div style="max-width: 800px; margin: 0 auto; padding: 20px; text-align: center;">
+  <h1 style="color: #0047ab;">Welcome to Junior Jets - Where Your Billionaire Kids can Take Flight!</h1>
+  <p style="color: #333;"><strong>About Us</strong><br>
+    Junior Jets is a company that specializes on building custom aircraft for Rich Children.
+  </p>
+  <p style="color: #333;"><strong>Our Programs</strong><br>
+    Explore our exciting selections:
+  </p>
+  <div>
+    <%= image_tag 'home_custom_img.jpg', style: "width: 500px; height: auto;" %>
+    <%= button_to "Pre-built Option", prebuilts_path, method: :get %>
+    <%= image_tag 'home_prebuilt_img.jpg', style: "width: 500px; height: auto;" %>
+    <%= button_to "Custom Option", new_custom_path, method: :get %>
+  </div>
+
+  <p style="color: #333;"><strong>Contact Us</strong><br>
+    Have questions or want to learn more about our custom planes? Contact us today!
+  </p>
+</div>
+
+</body>

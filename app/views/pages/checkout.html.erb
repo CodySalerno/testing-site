@@ -1,0 +1,54 @@
+<% content_for(:html_title) { 'Junior Jets | Checkout' } %>
+
+<h1 style="font-family:'Courier New'"><b>CHECKOUT</b></h1>
+
+<style>
+body {
+  background-image: url('https://www.paymentscardsandmobile.com/wp-content/uploads/2021/11/visa-mastercard-logos.jpg');
+}
+</style>
+
+<body>
+<div class="container">
+<h2 style="font-family:'Courier New'"><b>Enter Your Card Information</b></h2>
+
+
+<!-- Card -->
+  <div class="card">
+
+
+  <!-- Card Number -->
+  <div class="card">
+    <label>Card Number</label>
+    <input class="card-number" placeholder="1234 1234 1234 1234"           type="text" required maxlength="16" />
+
+  <div class="container2">
+
+    <!-- Card Holder -->
+    <div class="name">
+      <label>Card Holder</label>
+      <input class="card-name" placeholder="JESSICA EDWARDS" type="text" required />
+    </div>
+
+    <!-- Date -->
+    <div class="expiration-date">
+      <label>Exp. Date</label>
+      <input class="card-name" placeholder="10/25" type="text" maxlength="5" required />
+    </div>
+
+    <!-- Cvv -->
+    <div class="ccv">
+      <label>CCV</label>
+      <input class="card-name" placeholder="123" type="text" maxlength="3" required />
+    </div>
+
+    <a href="http://localhost:3000/confirm">
+      <button>Pay Now</button>
+    </a>
+    <a href="http://localhost:3000/cart">
+      <button>Cancel</button>
+    </a>
+  </div>
+</div>
+</div>
+</body>

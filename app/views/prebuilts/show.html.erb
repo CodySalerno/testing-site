@@ -1,0 +1,31 @@
+<h1 style= 'color: blue'><%= @prebuilt.name %></h1>
+
+<ul style='font-family:copperplate; border:2px solid; font-size: 25px'>
+  <li>
+    Manufacturer: <%= @prebuilt.manufacturer %>
+  </li>
+  <li>
+    Price: <%= @prebuilt.price %>
+  </li>
+  <li>
+    Color: <%= @prebuilt.color %>
+  </li>
+  <li>
+    Size: <%= @prebuilt.size %>
+  </li>
+</ul>
+
+<p>
+  <%= link_to 'Back to prebuilts', prebuilts_path, class: 'btn btn-primary' %>
+</p>
+
+<div class="card text-center" style="width: 18rem; ">
+  <div class="card-body">
+    <h5 class="card-title">Review our Services</h5>
+    <p class="card-text">From our gallery of Jets to our reasonable prices.</p>
+    <%= link_to 'Reviews', reviews_path, class: 'btn btn-primary' %>
+  </div>
+</div>
+<p>
+
+</p>

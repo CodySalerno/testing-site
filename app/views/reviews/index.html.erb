@@ -1,0 +1,51 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Junior Jets</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0;">
+
+<div style="background-color: #0047ab; color: #fff; padding: 10px 0; text-align: center;">
+  <h1 style="margin: 0;">Junior Jets</h1>
+</div>
+
+<hr>
+
+<h1 style = "text-align: center ">Review Our Service</h1>
+<table class="table table-striped table-hover">
+
+  <thead class="table-dark">
+    <tr>
+      <th>Reviews</th>
+      <th>Rating</th>
+      <th>User</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reviews.each do |review| %>
+      <tr>
+        <td><%= review.comment %></td>
+        <td><%= review.rating %></td>
+        <td><%= review.creator.email %></td>
+        <td class="text-nowrap">
+        <% if review.creator == current_user %>
+        <%= link_to 'edit', edit_review_path(review), class: 'btn btn-secondary btn-sm' %>
+        <%= button_to 'destroy', review_path(review), method: :delete, data: { turbo: false }, class: 'btn btn-secondary btn-sm', form: { class: 'd-inline' } %>
+        <% end %>
+
+      </td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+
+<p>
+  <%= link_to "New Review", new_review_path, class: "btn btn-secondary"%>
+</p>
+
+<p>
+  <%= link_to 'Back to Prebuilt', prebuilts_path, class: 'btn btn-secondary' %>
+</p>

@@ -1,0 +1,33 @@
+# == Schema Information
+#
+# Table name: customs
+#
+#  id                    :bigint           not null, primary key
+#  built_in_game         :string
+#  color                 :string
+#  crayon_walls          :boolean
+#  entertainment_tablets :boolean
+#  manufacturer          :string
+#  price                 :integer
+#  size                  :string
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#
+
+one:
+  color: MyString
+  size: MyString
+  price: 1
+  manufacturer: MyString
+  crayon_walls: false
+  entertainment_tablets: false
+  built_in_game: MyString
+
+two:
+  color: MyString
+  size: MyString
+  price: 1
+  manufacturer: MyString
+  crayon_walls: false
+  entertainment_tablets: false
+  built_in_game: MyString

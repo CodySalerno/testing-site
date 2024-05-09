@@ -1,0 +1,47 @@
+<% content_for(:html_title) { 'Junior Jets | Confirmation' } %>
+
+<h1 style="font-family:'Courier New'"><b>Thank you for your order!</b></h1>
+<br></br>
+
+<html>
+    <head>
+        <script src="https://randojs.com/1.0.0.js"></script>
+        <script>
+            function showRandomNumber(){
+                document.getElementById("myNumber").innerHTML = rando(0, 9)*987654321;
+            }
+        </script>
+        <style>
+            #myNumber
+            {
+                font-size:14px;
+                margin:50px auto;
+                font-family:Courier New, sans-serif;
+                display: inLine;
+            }
+            p
+            {
+              font-size: 14px;
+              font-family: Courier New;
+              line-height: 2;
+              text-align: center;
+
+            }
+            h1 {text-align: center;}
+        </style>
+    </head>
+    <body onload="showRandomNumber();"><b>
+        <div style="text-align:center ;font-family: 'Courier New'">
+        Congrats! Your order <div id="myNumber"></div>
+        has been placed successfully!</b></div>
+        <br></br>
+        <p> Please allow 3-5 business days for your order to be created as orders are made to order. After 3 - 5 business days,
+        the order will be shipped to the address on file in 7-10 businness days.
+        For any questions, comments, or concerns, please contact us by email jddwrds2@memphis.edu
+        <br></br>
+        <a href="http://localhost:3000/home">
+      <button>Home</button>
+        </a>
+        </p>
+    </body>
+</html>

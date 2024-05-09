@@ -1,0 +1,31 @@
+<h1>Your Custom Built Jets</h1>
+<table class="table table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th>Built in Game</th>
+      <th>Color</th>
+      <th>Crayon Walls</th>
+      <th>Entertainment Tablets</th>
+      <th>Manufacturer</th>
+      <th>Price</th>
+      <th>Size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customs.each do |custom| %>
+      <tr>
+        <td><%= custom.built_in_game %></td>
+        <td><%= custom.color %></td>
+        <td><%= custom.crayon_walls ? 'Yes' : 'No' %></td>
+        <td><%= custom.entertainment_tablets ? 'Yes' : 'No' %></td>
+        <td><%= custom.manufacturer %></td>
+        <td><%= number_to_currency(custom.price / 100.0) %></td>
+        <td><%= custom.size %></td>
+        <td><%= button_to 'Add to Cart', add_custom_to_cart_path(custom), method: :post, class: 'btn btn-sm btn-outline-secondary' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<p>
+  <%= link_to "Create New Custom Jet", new_custom_path, class: 'btn btn-primary' %>
+</p>

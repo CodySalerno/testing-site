@@ -1,0 +1,30 @@
+# == Schema Information
+#
+# Table name: prebuilts
+#
+#  id           :bigint           not null, primary key
+#  color        :string
+#  description  :string
+#  manufacturer :string
+#  name         :string
+#  price        :integer
+#  size         :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+one:
+  name: MyString
+  description: MyString
+  color: MyString
+  size: MyString
+  price: 1
+  manufacturer: MyString
+
+two:
+  name: MyString
+  description: MyString
+  color: MyString
+  size: MyString
+  price: 1
+  manufacturer: MyString

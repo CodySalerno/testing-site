@@ -1,0 +1,15 @@
+<h1><%= @review.user %></h1>
+
+<ul>
+  <li class="text-danger">
+    <%= @review.rating %>s
+  </li>
+  <li class="text-danger">
+    <%= @review.comment %>
+  </li>
+</ul>
+<%= bootstrap_form_with model: @reviews, method: :patch, url: prebuilt_review_path(@prebuilt, @review), data: { turbo: false } do |f| %>
+  <%= f.text_field :comment %>
+<p>
+  <%= link_to 'Back to Reviews', prebuilt_reviews_path(@prebuilt), class: 'btn btn-outline-secondary' %>
+</p>

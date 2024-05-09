@@ -1,0 +1,73 @@
+<% content_for(:html_title) { 'Junior Jets | Cart' } %>
+
+<h1 style="font-family:'Courier New'"><b>YOUR CART</b></h1>
+
+<div class="cart">
+
+<style>
+  #right {
+    text-align: right;
+    background-color: #ffffff;
+  }
+</style>
+
+<table id="line_items">
+  <tr>
+    <th>Product</th>
+    <th>Details</th>
+    <th class="price">Unit Price</th>
+  </tr>
+
+  <% @cart.each do |item| %>
+    <% product = item.item_type == 'Custom' ? Custom.find(item.id_of_jet) : Prebuilt.find(item.id_of_jet) %>
+    <tr class="<%= cycle 'odd', 'even' %>">
+      <% if item.item_type == 'Prebuilt' %>
+        <td><%= product.name %></td>
+        <td>
+          Color: <%= product.color %><br>
+          Description: <%= product.description %><br>
+          Manufacturer: <%= product.manufacturer %><br>
+          Size: <%= product.size %>
+        </td>
+      <% elsif item.item_type == 'Custom' %>
+        <td>Custom Jet</td>
+        <td>
+          Built-in Game: <%= product.built_in_game %><br>
+          Color: <%= product.color %><br>
+          Crayon Walls: <%= product.crayon_walls ? 'Yes' : 'No' %><br>
+          Entertainment Tablets: <%= product.entertainment_tablets ? 'Yes' : 'No' %><br>
+          Manufacturer: <%= product.manufacturer %><br>
+          Size: <%= product.size %>
+        </td>
+      <% end %>
+      <td class="price"><%= number_to_currency(product.price / 100.0) %></td>
+    </tr>
+    <br>
+  <% end %>
+</table>
+
+<div id="right">
+  <div class="totals">
+    <div class="totals-item">
+      <label>Subtotal</label>
+      <div class="totals-value" id="cart-subtotal"><%= number_to_currency(@cart.sum { |item| (item.item_type == 'Custom' ? Custom.find(item.id_of_jet) : Prebuilt.find(item.id_of_jet)).price } / 100.0) %></div>
+    </div>
+    <div class="totals-item">
+      <label>Tax (10%)</label>
+      <div class="totals-value" id="cart-tax"><%= number_to_currency(@cart.sum { |item| (item.item_type == 'Custom' ? Custom.find(item.id_of_jet) : Prebuilt.find(item.id_of_jet)).price } * 0.10 / 100.0) %></div>
+    </div>
+    <div class="totals-item">
+      <label>Shipping</label>
+      <div class="totals-value" id="cart-shipping">$15.00</div>
+    </div>
+    <div class="totals-item totals-item-total">
+      <label>Grand Total</label>
+      <div class="totals-value" id="cart-total"><%= number_to_currency((@cart.sum { |item| (item.item_type == 'Custom' ? Custom.find(item.id_of_jet) : Prebuilt.find(item.id_of_jet)).price } * 1.10 + 1500) / 100.0) %></div>
+    </div>
+  </div>
+  <a href="http://localhost:3000/checkout">
+    <button>Checkout</button>
+  </a>
+</div>
+
+</div>
